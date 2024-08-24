@@ -36,23 +36,28 @@ private:
     }
 
 public:
+    Graf(const int n){
+        brojCvorova =n;
+        komponenta.resize(n, -1);
+        posecen.resize(n, false);
+    }
 
     vector<int> kosaraju(){
-            posecen.resize(brojCvorova, false);
-            for(int cvor = 0; cvor< brojCvorova; cvor++)
-                if(!posecen[cvor])
-                    odrediOdlazniRedosled(cvor);
+        fill(posecen.begin(), posecen.end(), false);
+        for(int cvor = 0; cvor< brojCvorova; cvor++)
+            if(!posecen[cvor])
+                odrediOdlazniRedosled(cvor);
             
-            vector<vector<int>> transponovaniGraf = transponujGraf();
-            int brojac = 0;
+        vector<vector<int>> transponovaniGraf = transponujGraf();
+        int brojac = 0;
 
-            for(int i=brojCvorova-1;i>=0;i--){
-                int cvor = odlazniRedosled[i];
-                if(komponenta[cvor]==-1)
-                    odrediKomponentu(cvor, brojac++);
-            }
-        return komponenta;
-        }   
+        for(int i=brojCvorova-1;i>=0;i--){
+            int cvor = odlazniRedosled[i];
+            if(komponenta[cvor]==-1)
+                odrediKomponentu(cvor, brojac++);
+        }
+    return komponenta;
+    }   
 };
 
 int main(){
