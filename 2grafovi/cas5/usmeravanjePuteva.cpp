@@ -12,7 +12,7 @@ private:
     vector<int> dolaznaEnumeracija;
     vector<pair<int, int>> mostovi;
 
-    void pronadjiArtikulacioneTacke(int trenutni){
+    void pronadjiMostove(int trenutni){
         posecen[trenutni]=true;
         dolaznaEnumeracija[trenutni]=lowlink[trenutni]=dolazna++;
 
@@ -22,7 +22,7 @@ private:
                     lowlink[trenutni] = min(lowlink[trenutni], lowlink[sused]);
             } else {
                 roditelj[sused]=trenutni;
-                pronadjiArtikulacioneTacke(sused);
+                pronadjiMostove(sused);
 
                 lowlink[trenutni] = min(lowlink[trenutni], lowlink[sused]);
 
@@ -50,7 +50,7 @@ public:
     }
 
     bool moguSeUsmeriti(){
-        pronadjiArtikulacioneTacke(0);
+        pronadjiMostove(0);
         return mostovi.size()==0;
     }
 

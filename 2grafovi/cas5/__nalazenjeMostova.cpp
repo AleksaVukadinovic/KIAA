@@ -12,7 +12,7 @@ private:
     vector<int> roditelj;
     vector<pair<int, int>> mostovi;
 
-    void pronadjiArtikulacioneTacke(int cvor){
+    void pronadjiMostove(int cvor){
         posecen[cvor]=true;
         dolazna[cvor]=vremeDolaska++;
         lowlink[cvor]=dolazna[cvor];
@@ -24,7 +24,7 @@ private:
                         lowlink[cvor]=dolazna[sused];
             } else {
                 roditelj[sused]=cvor;
-                pronadjiArtikulacioneTacke(sused);
+                pronadjiMostove(sused);
 
                 if(lowlink[sused] < lowlink[cvor])
                     lowlink[cvor] = lowlink[sused];
@@ -52,7 +52,7 @@ public:
     }
 
     void ispisiMostove(int cvor){
-        pronadjiArtikulacioneTacke(cvor);
+        pronadjiMostove(cvor);
         for(pair<int, int> p: mostovi)
             cout << p.first << " " << p.second << '\n';
     }

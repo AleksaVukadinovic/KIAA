@@ -29,7 +29,7 @@ public:
         listaSusedstva[b].push_back(a);
     }
 
-    void pronadjiArtikulacioneTacke(int trenutni){
+    void pronadjiMostove(int trenutni){
         posecen[trenutni]=true;
         lowlink[trenutni] = dolaznaEnumeracija[trenutni] = dolazniBrojac++;
         int brojDece = 0;
@@ -41,7 +41,7 @@ public:
             } else {
                 brojDece++;
                 roditelj[sused]=trenutni;
-                pronadjiArtikulacioneTacke(sused);
+                pronadjiMostove(sused);
 
                 lowlink[trenutni]=min(lowlink[trenutni], lowlink[sused]);
 

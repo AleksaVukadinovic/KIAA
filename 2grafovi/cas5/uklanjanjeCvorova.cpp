@@ -29,7 +29,7 @@ public:
         listaSusedstva[b].push_back(a);
     }
 
-    void pronadjiArtikulacioneTacke(int trenutni){
+    void pronadjiMostove(int trenutni){
         posecen[trenutni]=true;
         lowlink[trenutni] = dolaznaEnumeracija[trenutni] = brojacDolazna++;
         int brojDece = 0;
@@ -41,13 +41,12 @@ public:
             } else {
                 brojDece++;
                 roditelj[sused]=trenutni;
-                pronadjiArtikulacioneTacke(sused);
+                pronadjiMostove(sused);
 
                 lowlink[trenutni]=min(lowlink[trenutni], lowlink[sused]);
 
                 if(roditelj[trenutni]!=-1 && dolaznaEnumeracija[trenutni]<=lowlink[sused])
                     artikulacioneTacke[trenutni]=true;
-
             }
 
             if(brojDece>1 && roditelj[trenutni]==-1)
@@ -70,7 +69,7 @@ int main(){
         G->dodajGranu(a, b);
     }
     cin >> q;
-    G->pronadjiArtikulacioneTacke(0);
+    G->pronadjiMostove(0);
     while(q--){
         cin >> a;
         pair<bool, int> tmp = G->upit(a);
