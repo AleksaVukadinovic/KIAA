@@ -31,8 +31,6 @@ public:
 
     void dajkstra(int start){
         minRastojanje[start]=0;
-        resen[start]=true;
-
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> red;
         red.push({0, start});
 

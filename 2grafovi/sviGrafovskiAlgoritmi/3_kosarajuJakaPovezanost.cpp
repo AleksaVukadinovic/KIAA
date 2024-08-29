@@ -36,6 +36,7 @@ public:
     Graf(const int n){
         brojCvorova = n;
         listaSusedstva.resize(n);
+        listaSusedstvaTransponovano.resize(n);
         posecen.resize(n, false);
         komponenta.resize(n, -1);
     }

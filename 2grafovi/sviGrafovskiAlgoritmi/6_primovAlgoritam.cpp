@@ -35,7 +35,7 @@ public:
         minRastojanje[0]=0;
 
         while(!red.empty()){
-            auto [cvor, udaljenost] = red.top();
+            auto [udaljenost, cvor] = red.top();
             red.pop();
 
             if(uDrvetu[cvor])
