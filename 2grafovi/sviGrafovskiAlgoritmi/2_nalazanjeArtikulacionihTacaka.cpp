@@ -44,7 +44,7 @@ public:
         int brojDece = 0;
 
         for(int sused: listaSusedstva[cvor]){
-            if(posecen[cvor]){
+            if(posecen[sused]){
                 if(roditelj[cvor]!=sused)
                     lowlink[cvor]=min(lowlink[cvor], dolazna[sused]);
             } else {
